@@ -5,7 +5,7 @@ from _collections_abc import Set as _Set, Sequence as _Sequence
 
 
 # my sample
-def improved_sample(population, k):
+def improved_sample(population, k, shuffle=True):
     if isinstance(population, _Set):
         population = tuple(population)
     if not isinstance(population, _Sequence):
@@ -29,5 +29,8 @@ def improved_sample(population, k):
             result.append(population[available - 1])
             left -= 1
         available -= 1
+
+    if shuffle:
+        random.shuffle(result)
 
     return result
